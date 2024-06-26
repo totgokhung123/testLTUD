@@ -28,6 +28,5 @@ public class Book {
     @Pattern(regexp = "^[A-Za-z ]+$", message = "Thể loại chi chấp nhận chữ cái và khoảng trắng")
     private String category;
     private String image; // Thêm trường lưu trữ tên ảnh
-    // Thêm trường lưu trữ tên ảnh
-    // Thêm trườn
+    //alo test
 }
