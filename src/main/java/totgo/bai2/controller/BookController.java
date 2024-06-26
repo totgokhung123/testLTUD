@@ -40,7 +40,7 @@ public class BookController {
         model.addAttribute("book", new Book());
         return "book/add";
     }
-
+//juhuuhu
 
 
     @PostMapping("/add")
