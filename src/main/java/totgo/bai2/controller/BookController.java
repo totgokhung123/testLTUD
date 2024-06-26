@@ -41,6 +41,8 @@ public class BookController {
         return "book/add";
     }
 
+
+
     @PostMapping("/add")
     public String addBook(@Valid @ModelAttribute("book") Book book, BindingResult result, @RequestParam("imageFile") MultipartFile imageFile) {
         if (result.hasErrors()) {
