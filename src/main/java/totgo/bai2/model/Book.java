@@ -29,5 +29,5 @@ public class Book {
     private String category;
     private String image; // Thêm trường lưu trữ tên ảnh
     // Thêm trường lưu trữ tên ảnh
-    // Thêm trường lưu trữ tên ảnh
+    // Thêm trường
 }
