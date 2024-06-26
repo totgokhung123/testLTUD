@@ -24,7 +24,7 @@ public class Book {
     private Double price;
 
     @NotBlank(message = "Thể loại không được để trống")
-    @Pattern(regexp = "^[A-Za-z ]+$", message = "Thể loại chi chấp nhận chữ cái và khoảng trắng")
+    @Pattern(regexp = "^[A-Za-z ]+$", message = "Thể loại chi chấp nhận chữ cái và khoảng trắng ccccccccccccccccc")
     private String category;
     private String image; // Thêm trường lưu trữ tên ảnh
 }
