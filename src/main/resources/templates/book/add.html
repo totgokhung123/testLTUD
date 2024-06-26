@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:replace="layout::link-css"></th:block>
+    <title>Thêm sách</title>
+</head>
+<body>
+<th:block th:replace="layout::header"></th:block>
+<div class="container">
+    <h1>Thêm mới sách</h1>
+    <form th:action="@{/add}" th:object="${book}" method="post" enctype="multipart/form-data">
+        <!-- Trường ID đã bị ẩn và không cho nhập -->
+        <input type="hidden" th:field="*{id}" id="id">
+
+        <div class="col-6 mb-3">
+            <label class="form-label" for="title">Tên sách: </label>
+            <input class="form-control" type="text" th:field="*{title}" id="title">
+            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></span>
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="author">Tác giả :</label>
+            <input class="form-control" type="text" th:field="*{author}" id="author">
+            <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="text-danger"></span>
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="price">Giá :</label>
+            <input class="form-control" type="text" th:field="*{price}" id="price">
+            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="category">Danh mục :</label>
+            <input class="form-control" type="text" th:field="*{category}" id="category">
+            <span th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="text-danger"></span>
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="imageFile">Ảnh:</label>
+            <input class="form-control" type="file" id="imageFile" name="imageFile" onchange="previewImage(event)">
+            <img id="preview" src="#" alt="Book Image Preview" style="display: none; width: 100px; height: 100px; margin-top: 10px;">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Thêm mới">
+    </form>
+    <br>
+    <a th:href="@{/}">Trở về</a>
+</div>
+<th:block th:replace="layout::footer"></th:block>
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var reader = new FileReader();
+        reader.onload = function(){
+            var dataURL = reader.result;
+            var preview = document.getElementById('preview');
+            preview.src = dataURL;
+            preview.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+</script>
+</body>
+</html>

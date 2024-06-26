@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sách</title>
+    <th:block th:replace="layout::link-css"></th:block>
+</head>
+<body>
+<th:block th:replace="layout::header"></th:block>
+<div class="container">
+    <h1 th:text="${title}"></h1>
+    <table class="table">
+        <tr>
+            <th>Mã sách</th>
+            <th>Tên sách</th>
+            <th>Tác giả</th>
+            <th>Giá bán</th>
+            <th>Danh mục</th>
+            <th>Ảnh</th>
+            <th>Chức năng</th>
+        </tr>
+        <tr th:each="book : ${listBook}">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.price}"></td>
+            <td th:text="${book.category}"></td>
+            <td>
+                <img th:if="${book.image}" th:src="@{/images/{image}(image=${book.image})}" alt="Book Image" style="width: 100px; height: 100px;">
+            </td>
+            <td>
+                <a th:href="@{/books/edit/{id}(id=${book.id})}">Sửa</a> |
+                <a th:href="@{/books/delete/{id}(id=${book.id})}" onclick="return confirm('Bạn có muốn xóa không?')">Xóa</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<th:block th:replace="layout::footer"></th:block>
+</body>
+</html>
