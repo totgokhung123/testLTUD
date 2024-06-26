@@ -29,4 +29,5 @@ public class Book {
     private String category;
     private String image; // Thêm trường lưu trữ tên ảnh
     //alo test
+    //test
 }
